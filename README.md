@@ -5,11 +5,11 @@
 按照Rational Unified Process（RUP，Rational统一过程）的软件开发生命周期模型，指导整个项目的开发。
 
 ## 二、技术要求
-1、基于Java/JavaScritp语言和JSP技术。JDK虚拟机，MySQL数据库，Web服务器Tomcat，数据库服务器Apache。
+#### 1、基于Java/JavaScritp语言和JSP技术。JDK虚拟机，MySQL数据库，Web服务器Tomcat，数据库服务器Apache。
 建议：使用纯绿色软件JspStudy。JspStudy集成了JDK+Tomcat+ Apache+MySQL，JSP环境配置一键启动。无需修改任何配置即可迅速搭建支持JSP的服务器运行环境。
-2、Win2000/XP/win7/win8/win2008 操作系统。
-3、IE浏览器，Google Chrome浏览器，360浏览器等主流浏览器。
-4、网络版的在线开放课程平台。从全省其他高校可以成功访问本平台，并进行相应的操作。
+#### 2、Win2000/XP/win7/win8/win2008 操作系统。
+#### 3、IE浏览器，Google Chrome浏览器，360浏览器等主流浏览器。
+#### 4、网络版的在线开放课程平台。从全省其他高校可以成功访问本平台，并进行相应的操作。
 
 ## 三、功能要求
 ### 客户端（前台）：
