@@ -1,0 +1,2349 @@
+/*
+Theme Name: LabStyle
+Theme URI: http://www.powerxing.com
+Author: 给力星
+Author URI: http://www.powerxing.com
+Description: LabStyle for Database Lab Of XMU
+Version: 1.5.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: white, light, green , custom-background, custom-header, custom-menu, fluid-layout, featured-images, full-width-template, left-sidebar, right-sidebar, one-column, two-columns, three-columns, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready, photoblogging, holiday
+Text Domain: labstyle
+*/
+
+/*
+	HTML5 Reset :: style.css
+	----------------------------------------------------------
+	We have learned much from/been inspired by/taken code where offered from:
+	
+	Eric Meyer					:: http://meyerweb.com
+	HTML5 Doctor				:: http://html5doctor.com
+	and the HTML5 Boilerplate	:: http://html5boilerplate.com
+	
+-------------------------------------------------------------------------------*/
+
+/* Let's default this puppy out
+-------------------------------------------------------------------------------*/
+
+html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, menu, nav, section, time, mark, audio, video, details, summary {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+/* consider resetting the default cursor: https://gist.github.com/murtaugh/5247154 */
+
+article, aside, figure, footer, header, nav, section, details, summary {
+    display: block;
+}
+
+/* Responsive images and other embedded objects
+   Note: keeping IMG here will cause problems if you're using foreground images as sprites.
+   If this default setting for images is causing issues, you might want to replace it with a .responsive class instead. */
+img,
+object,
+embed {
+    max-width: 100%;
+}
+
+/* force a vertical scrollbar to prevent a jumpy page */
+html {
+    overflow-y: scroll;
+}
+
+/* we use a lot of ULs that aren't bulleted. 
+	don't forget to restore the bullets within content. */
+ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+a {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom: 1px dotted #000;
+    cursor: help;
+}
+
+/* tables still need cellspacing="0" in the markup */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+th {
+    font-weight: bold;
+    vertical-align: bottom;
+}
+
+td {
+    font-weight: normal;
+    vertical-align: top;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+input, select {
+    vertical-align: middle;
+}
+
+pre {
+    white-space: pre; /* CSS2 */
+    white-space: pre-wrap; /* CSS 2.1 */
+    white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+    word-wrap: break-word; /* IE */
+}
+
+input[type="radio"] {
+    vertical-align: text-bottom;
+}
+
+input[type="checkbox"] {
+    vertical-align: bottom;
+}
+
+.ie7 input[type="checkbox"] {
+    vertical-align: baseline;
+}
+
+.ie6 input {
+    vertical-align: text-bottom;
+}
+
+select, input, textarea {
+    font-size: 99%;
+}
+
+table {
+    font-size: inherit;
+    font: 100%;
+}
+
+small {
+    font-size: 85%;
+}
+
+strong {
+    font-weight: bold;
+}
+
+td, td img {
+    vertical-align: top;
+}
+
+/* Make sure sup and sub don't screw with your line-heights
+	gist.github.com/413930 */
+sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+/* standardize any monospaced elements */
+pre, code, kbd, samp {
+    font-family: monospace, sans-serif;
+}
+
+/* hand cursor on clickable elements */
+.clickable,
+label,
+input[type=button],
+input[type=submit],
+input[type=file],
+button {
+    cursor: pointer;
+}
+
+/* Webkit browsers add a 2px margin outside the chrome of form elements */
+button, input, select, textarea {
+    margin: 0;
+}
+
+/* make buttons play nice in IE */
+button,
+input[type=button] {
+    width: auto;
+    overflow: visible;
+}
+
+/* scale images in IE7 more attractively */
+.ie7 img {
+    -ms-interpolation-mode: bicubic;
+}
+
+/* prevent BG image flicker upon hover 
+   (commented out as usage is rare, and the filter syntax messes with some pre-processors)
+.ie6 html {filter: expression(document.execCommand("BackgroundImageCache", false, true));}
+*/
+
+/* let's clear some floats */
+.clearfix:before, .clearfix:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    overflow: hidden;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+/* End. HTML5 Reset :: style.css
+-------------------------------------------------------------------------------*/
+
+/* Apply a natural box layout model to all elements: http://paulirish.com/2012/box-sizing-border-box-ftw/ */
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.chromeframe {
+    position: absolute;
+    top: 0;
+}
+
+/* Ok, this is where the fun starts.
+-------------------------------------------------------------------------------*/
+
+/* A Linux- and Windows-friendly sans-serif font stack: http://prospects.mhurrell.co.uk/post/updating-the-helvetica-font-stack */
+body {
+    font-size: 13px;
+    font-family: "Microsoft YaHei", 微软雅黑, Tahoma, sans-serif;
+}
+
+/* Using local fonts? Check out Font Squirrel's webfont generator: http://www.fontsquirrel.com/tools/webfont-generator */
+
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+h2 {
+    font-size: 1.8em;
+    margin: 0.83em 0;
+}
+
+h3 {
+    font-size: 1.5em;
+    margin: 1em 0;
+}
+
+h4 {
+    font-size: 1.3em;
+    margin: 1.33em 0;
+}
+
+h5 {
+    font-size: 1.0em;
+    margin: 1.33em 0;
+}
+
+h6 {
+    font-size: 1.0em;
+    margin: 1.33em 0;
+}
+
+img {
+    height: auto; /* Make sure images are scaled correctly. */
+    max-width: 100%; /* Adhere to container width. */
+}
+
+button,
+input,
+select,
+textarea {
+    font-size: 100%; /* Corrects font size not being inherited in all browsers */
+    margin: 0; /* Addresses margins set differently in IE6/7, F3/4, S5, Chrome */
+    vertical-align: baseline; /* Improves appearance and consistency in all browsers */
+    *vertical-align: middle; /* Improves appearance and consistency in all browsers */
+}
+
+textarea {
+    overflow: auto; /* Removes default vertical scrollbar in IE6/7/8/9 */
+    padding-left: 3px;
+    vertical-align: top; /* Improves readability and alignment in all browsers */
+    width: 98%;
+}
+
+/* Custom text-selection colors (remove any text shadows: http://twitter.com/miketaylr/status/12228805301) */
+::-moz-selection {
+    background: #fcd700;
+    color: #fff;
+    text-shadow: none;
+}
+
+::selection {
+    background: #fcd700;
+    color: #fff;
+    text-shadow: none;
+}
+
+/*	j.mp/webkit-tap-highlight-color */
+a:link {
+    -webkit-tap-highlight-color: #fcd700;
+}
+
+ins {
+    background-color: #fcd700;
+    color: #000;
+    text-decoration: none;
+}
+
+mark {
+    background-color: #fcd700;
+    color: #000;
+    font-style: italic;
+    font-weight: bold;
+}
+
+/* Mozilla dosen't style place holders by default */
+input:-moz-placeholder {
+    color: #a9a9a9;
+}
+
+textarea:-moz-placeholder {
+    color: #a9a9a9;
+}
+
+/* We like off-black for text. */
+body, select, input, textarea {
+    color: #222;
+}
+
+a {
+    color: #008fef;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #2980b9;
+}
+
+a:hover,
+a:focus {
+    color: #2980b9;
+}
+
+body, .wrapper {
+    background: #eee url('./images/wapper-bg.png');
+}
+
+/**
+ * Global Structure
+ * 960 Grid
+ * ---------------------------------------------------------------------------*/
+.wrapper {
+    width: 100%;
+}
+
+/* ------------------------ Header --------------- */
+.site-header {
+    background-color: #FFFFFF;
+}
+
+.site-title {
+    margin: 0;
+    padding: 0;
+}
+
+.site-title a {
+    display: block;
+    font-size: 0;
+    color: #fff;
+    /*text-indent: -999px;*/
+}
+
+.site-logo {
+    margin: 0 auto;
+    max-width: 960px;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* -------- navigation -------- */
+.site-navigation {
+    position: relative;
+    height: 50px;
+    background-color: #414141;
+    z-index: 10;
+}
+
+.menu-main-container {
+    position: relative;
+    max-width: 960px;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+
+.site-navigation .menu-level-1 {
+    position: absolute;
+    width: 940px;
+}
+
+.site-navigation li {
+    float: left;
+    position: relative;
+    display: inline-block;
+}
+
+.site-navigation li a {
+    color: #FFFFFF;
+    transition: color .25s;
+}
+
+.site-navigation li a:hover {
+    color: #ff9200;
+}
+
+.site-navigation .item-level-1 > a {
+    display: block;
+    padding: 14px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 700;
+}
+
+.site-navigation .menu-level-2 {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 300px;
+    z-index: 99;
+    padding: 4px 0 16px;
+    background-color: #515151;
+}
+
+.site-navigation .item-level-2 {
+    width: 150px;
+}
+
+.site-navigation .item-level-2 > a {
+    padding-left: 13px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: left;
+}
+
+.site-navigation .item-level-3 {
+    float: none;
+    display: block;
+    width: 100%;
+    padding-left: 24px;
+}
+
+.site-navigation .item-level-3 > a {
+    height: 26px;
+    line-height: 26px;
+    font-size: 12px;
+}
+
+.site-navigation .item-level-1:hover,
+.site-navigation .item-level-1.active {
+    background-color: #515151 !important;
+}
+
+.site-navigation .item-level-1.active-path {
+    /*border-top: 2px solid #F97E76;*/
+    /*margin-top: -2px;*/
+    /*background-color: #53C5C5;*/
+    background-color: #16A085;
+}
+
+.small-menu {
+    display: none;
+    height: 50px;
+    background: url('./images/small-menu.png') 10px 0 no-repeat;
+    cursor: pointer;
+}
+
+.small-menu-open {
+    background-position-y: -50px;
+}
+
+/* -------- breadcrumbs -------- */
+.breadcrumbs {
+    color: #fefefe;
+    background-color: #16A085;
+}
+
+.breadcrumbs-container {
+    max-width: 960px;
+    padding: 16px 10px;
+    margin: 0 auto;
+    line-height: 1.6em;
+}
+
+.breadcrumbs em {
+    font-style: normal;
+    padding: 0 2px;
+}
+
+.breadcrumbs a {
+    margin: 0 2px;
+    color: #fefefe;
+}
+
+/* ------------------------ Main --------------- */
+.site-main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.site-content {
+    width: 75.53%;
+    float: left;
+    margin: 20px 0;
+    padding: 20px 15px;
+    background-color: #FFFFFF;
+}
+
+.site-leader {
+    width: 100%;
+    float: left;
+    margin: 20px 0;
+    padding: 20px 15px;
+    background-color: #FFFFFF;
+}
+
+#lerder_table {
+    display: table;
+    border-collapse: collapse;
+    border-spacing: 2px;
+    margin: auto;
+}
+
+#lerder_table th, td {
+    display: table-cell;
+    vertical-align: inherit;
+}
+
+#lerder_table h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.widget-area {
+    width: 22.4%;
+    float: left;
+    margin: 20px 0 20px 2%;
+}
+
+.widget-area .widget-title h6 {
+    color: #FFFFFF;
+    background: #F97E76;
+}
+
+/* ------------------------ Footer --------------- */
+.site-footer {
+    color: #ccc;
+    background-color: #2D2D2D;
+}
+
+/* ------------------------ Common --------------- */
+/* -------- alignment -------- */
+.aligncenter {
+    text-indent: 0;
+    text-align: center;
+}
+
+img.aligncenter {
+    display: block;
+    margin: 0 auto;
+}
+
+.alignleft {
+    text-indent: 0;
+    text-align: left;
+}
+
+.alignright {
+    text-indent: 0;
+    text-align: right;
+}
+
+/* -------- Widget area -------- */
+.widget-area .widget {
+    margin: 0 0 20px;
+}
+
+.widget-area .widget-title {
+    position: relative;
+    margin: 0 0 12px;
+    border-bottom: 2px solid #F97E76;
+}
+
+.widget-area .widget-title h5 {
+    display: inline-block;
+    margin: 0;
+    padding: 5px 10px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #FFFFFF;
+    background-color: #F97E76;
+}
+
+.widget-area .widget-title .more {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    line-height: 30px;
+}
+
+.widget-area .list-item {
+    clear: both;
+}
+
+.widget-area .ajax_hits_counter_popular_posts_widget li {
+    line-height: 2em;
+    padding-left: 10px;
+    background-image: url('./images/arrow-right.png');
+    background-position: 0 12px;
+    background-repeat: no-repeat;
+}
+
+.widget-area .ajax_hits_counter_popular_posts_widget li a {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #444;
+    transition: color, background .3s;
+}
+
+.widget-area .ajax_hits_counter_popular_posts_widget li a:hover {
+    color: #017CB9;
+    background-color: #e2e2e2;
+}
+
+.widget-area .ajax_hits_counter_popular_posts_widget li a:visited {
+    color: #555;
+}
+
+.widget-area .ajax_hits_counter_popular_posts_widget .post-date {
+    display: none;
+    color: #666;
+}
+
+.widget-area .widget_recent_entries li {
+    line-height: 2em;
+    padding-left: 10px;
+    background-image: url('./images/arrow-right.png');
+    background-position: 0 12px;
+    background-repeat: no-repeat;
+}
+
+.widget-area .widget_recent_entries li a {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #444;
+    transition: color, background .3s;
+}
+
+.widget-area .widget_recent_entries li a:hover {
+    color: #017CB9;
+    background-color: #e2e2e2;
+}
+
+.widget-area .widget_recent_entries li a:visited {
+    color: #555;
+}
+
+.widget-area .widget_recent_entries .post-date {
+    display: none;
+    color: #666;
+}
+
+.widget-area .all-teachers {
+    display: none;
+}
+
+/* -------- Site info -------- */
+.site-info {
+    position: relative;
+    line-height: 1.4em;
+}
+
+.site-info a {
+    color: #ffffff;
+}
+
+.site-info-container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.site-info .copyright {
+    float: left;
+    width: 100%;
+    margin-right: -200px;
+    padding: 20px 0;
+    line-height: 1.8em;
+}
+
+.site-info .designer {
+    color: #FFFFFF;
+}
+
+.site-info .login {
+    float: left;
+    width: 200px;
+    padding: 20px 0;
+}
+
+.site-info .login li {
+    float: right;
+    margin: 0 6px;
+}
+
+.site-info .sitemap a,
+.site-info .tongji a,
+.site-info .lab a {
+    color: #CCCCCC;
+}
+
+/* ------------------------ Home Page --------------- */
+/* -------- Slider -------- */
+.home-slider {
+    padding: 20px 10px;
+    background-color: #16A085;
+}
+
+.home-slider .metaslider {
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 8px;
+    min-height: 100px;
+    background-color: #FFFFFF;
+}
+
+.home-slider .rslides_nav.prev {
+    font-size: 20px;
+    font-weight: normal;
+    left: 8px;
+}
+
+.home-slider .rslides_nav.next {
+    font-size: 20px;
+    font-weight: normal;
+    right: 8px;
+}
+
+/* -------- Home primary --------*/
+.home-primary {
+    padding: 30px 0 0;
+}
+
+.home-primary .widget {
+    float: left;
+    width: 32%;
+    margin-right: 2%;
+    background-color: #FFFFFF;
+}
+
+.home-primary .home-widget-hot {
+    margin-right: 0;
+}
+
+.home-primary .widget-title {
+    position: relative;
+    margin: 12px;
+    border-bottom: 2px solid #38B7EA;
+}
+
+.home-primary .widget-title h5 {
+    display: inline-block;
+    margin: 0;
+    padding: 6px;
+    font-size: 18px;
+    color: #FFF;
+    background-color: #38B7EA;
+}
+
+.home-primary .widget-title .more {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    line-height: 36px;
+}
+
+.home-primary ul {
+    padding: 8px 12px 14px;
+}
+
+.home-primary .list-item {
+    clear: both;
+}
+
+.home-primary li {
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+    background-image: url('./images/arrow-right.png');
+    background-position: 0 12px;
+    background-repeat: no-repeat;
+}
+
+.home-primary li a {
+    display: block;
+    margin-right: 70px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #222;
+    transition: color, background .25s;
+}
+
+.home-primary li a:hover {
+    color: #008fef;
+    background-color: #fafafa;
+}
+
+.home-primary li .post-title {
+    display: block;
+    float: left;
+    width: 100%;
+}
+
+.home-primary li .post-date {
+    display: block;
+    position: relative;
+    float: right;
+    width: 70px;
+    margin-left: -70px;
+    font-size: 12px;
+    text-align: right;
+    color: #888888;
+}
+
+.home-split {
+    display: none;
+    /*	margin: 10px 0;
+        height: 20px;
+        background: url("./images/home-split.png") repeat-x left bottom;*/
+}
+
+/* -------- Lab intro -------- */
+.lab-intro {
+    margin: 20px 0 40px;
+}
+
+.lab-intro-area {
+    float: left;
+    width: 24.2%;
+    margin-right: 1%;
+}
+
+.lab-intro .area-four {
+    margin-right: 0%;
+}
+
+.lab-intro .area-title h5 {
+    text-align: center;
+    font-size: 18px;
+    color: #2980b9;
+}
+
+.lab-intro .area-content {
+    padding: 0 12px;
+}
+
+.lab-intro .image {
+    text-align: center;
+}
+
+.lab-intro .text {
+    padding: 10px 0;
+    line-height: 1.8em;
+}
+
+.lab-intro .more {
+    text-align: right;
+}
+
+.lab-intro .more a {
+    color: #666;
+}
+
+.lab-intro .more a:hover,
+.lab-intro .more a:focus,
+.lab-intro .more a:active {
+    color: #017CB9;
+}
+
+/* -------- Lab info -------- */
+.lab-info {
+    background-color: #1D1D1D;
+    /*background: #1D1D1D url('./images/diamonds.png');*/
+}
+
+.lab-info-container {
+    max-width: 960px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 20px 10px;
+}
+
+.lab-info-area {
+    width: 50%;
+    /*padding: 0 10px;*/
+    height: 100%;
+    float: left;
+}
+
+.lab-info .area-title {
+    margin: 0;
+    padding: 20px;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+.lab-info .text {
+    padding: 0px 20px;
+    line-height: 1.8em;
+}
+
+.lab-info .textwidget .text a {
+    color: #FFFFFF;
+}
+
+.lab-info .more {
+    padding: 10px 20px;
+    text-align: right;
+}
+
+.lab-info .more a {
+    color: #EEEEEE;
+}
+
+.lab-info .more a:hover,
+.lab-info .more a:focus,
+.lab-info .more a:active {
+    color: #017CB9;
+}
+
+.lab-info .map {
+    padding: 0 20px;
+}
+
+/* -------- Lab statistics -------- */
+.site-statistics {
+    background-color: #2c3e50;
+}
+
+.site-statistics-container {
+    max-width: 960px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 10px 10px;
+}
+
+.site-statistics-area {
+    float: left;
+    width: 32%;
+    margin-right: 2%;
+}
+
+.site-statistics .area-last {
+    margin-right: 0%;
+}
+
+.site-statistics .area-title {
+    margin: 0;
+    padding: 10px;
+    font-size: 16px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.site-statistics .area-content {
+    padding: 0px 20px;
+    text-align: center;
+    color: #e74c3c;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.site-statistics .text {
+    padding: 10px 10px 20px;
+    color: #ccc;
+    text-align: center;
+}
+
+.site-statistics .text a {
+    color: #ccc;
+
+}
+
+/* ------------------------ Archive --------------- */
+/* -------- Page list -------- */
+.page-header {
+    border-bottom: 2px solid #38B7EA;
+}
+
+.page-title {
+    margin-top: 0;
+    color: #444;
+}
+
+.page-list {
+    margin: 16px 0 0;
+}
+
+.page-list .list-item {
+    height: 2.4em;
+    line-height: 2.4em;
+    font-size: 14px;
+    border-bottom: 1px dashed #dedede;
+    clear: both;
+}
+
+.page-list .list-item:last {
+    border: none;
+}
+
+.page-list .list-item:hover {
+    background-color: #EEEEEE;
+}
+
+.page-list .list-item a {
+    display: block;
+    margin-right: 80px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #333;
+    transition: color .25s;
+}
+
+.page-list .list-item a:hover {
+    color: #017CB9;
+}
+
+.page-list .list-item a:visited {
+    color: #555;
+}
+
+.page-list .list-item .post-title {
+    display: block;
+    float: left;
+    width: 100%;
+}
+
+.page-list .list-item .post-date {
+    display: block;
+    position: relative;
+    float: right;
+    width: 80px;
+    margin-left: -80px;
+    text-align: right;
+    color: #666;
+}
+
+/* -------- Page Nav -------- */
+.page-nav {
+    margin: 20px 0 0;
+}
+
+.wp-pagenavi {
+    text-align: center;
+}
+
+.wp-pagenavi span, .wp-pagenavi a {
+    display: inline-block;
+    margin: 4px 6px;
+    padding: 10px 14px;
+    font-size: 16px;
+    line-height: 1em;
+    color: #fff;
+    background-color: #53C5C5;
+    transition: background .3s;
+}
+
+.wp-pagenavi a:hover {
+    background: #F97E76;
+}
+
+.wp-pagenavi .current {
+    background: #F97E76;
+}
+
+/* ---------------- special category ---------------- */
+/* -------- 小组讨论会 -------- */
+.page-list .discussion-ul {
+    padding-top: 10px;
+}
+
+.page-list .discussion-text {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.page-list .discussion-text p {
+    font-size: 15px;
+    text-align: center;
+    line-height: 1.6em;
+}
+
+.page-list .discussion-item {
+    padding: 8px 0;
+    border-bottom: 1px dashed #dedede;
+}
+
+.page-list .discussion-item span {
+    float: left;
+    display: inline-block;
+    line-height: 1.8em;
+}
+
+.page-list .discussion-item em {
+    padding-right: 4px;
+    color: #555;
+}
+
+.page-list .discussion-item .summary em {
+    font-style: normal;
+    font-weight: bold;
+    color: #222;
+}
+
+.page-list .discussion-item .post-title {
+    padding-bottom: 4px;
+}
+
+.page-list .discussion-item .post-title a {
+    font-size: 14px;
+}
+
+.page-list .discussion-item .date, .page-list .discussion-item .location {
+    width: 50%;
+}
+
+.page-list .discussion-item .post-title, .page-list .discussion-item .people, .page-list .discussion-item .summary {
+    width: 100%;
+}
+
+.page-list .discussion-item .summary {
+    padding-top: 6px;
+}
+
+.page-list .discussion-item .more {
+    margin-left: 6px;
+}
+
+/* -------- 相册 -------- */
+.page-list .gallery-item {
+    width: 33%;
+}
+
+.page-list .gallery-item img {
+    width: 100% !important;
+    height: auto !important;
+}
+
+.page-list .gallery-item span {
+    display: inline-block;
+    width: 100%;
+}
+
+.page-list .gallery-item .post-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* -------- 实验室学生 -------- */
+.page-list .grade-text {
+    padding: 4px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.page-list .student-ul {
+    padding-top: 10px;
+}
+
+.page-list .student-item {
+    float: left;
+    display: block;
+    width: 50%;
+    min-height: 195px;
+    margin-bottom: 15px;
+}
+
+.page-list .student-item .student-photo {
+    float: left;
+    display: inline-block;
+    width: 45%;
+    border: 1px solid #EEEEEE;
+    -webkit-box-shadow: 2px 2px 3px #bbb;
+    -moz-box-shadow: 2px 2px 3px #bbb;
+    box-shadow: 2px 2px 3px #bbb;
+}
+
+.page-list .student-item .photo-box {
+    display: block;
+    padding: 6px;
+}
+
+.page-list .student-item .photo-box img {
+    width: 100% !important;
+    height: auto !important;
+}
+
+.page-list .student-item .student-name {
+    display: block;
+    padding: 4px 0 8px;
+    text-align: center;
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.page-list .student-item .student-name a {
+    color: #333;
+}
+
+.page-list .student-item .student-name a:hover {
+    transition: color .3s;
+    color: #017cb9;
+}
+
+.page-list .student-item .student-info {
+    display: inline-block;
+    float: left;
+    width: 55%;
+    padding: 4px 6px 4px 12px;
+}
+
+.page-list .student-item .student-info span {
+    display: block;
+    line-height: 2em;
+}
+
+.page-list .student-item .student-info em {
+    padding-right: 4px;
+    color: #444;
+}
+
+.page-list .student-item .student-info .email em {
+    display: block;
+}
+
+.page-list .student-item .student-info .website {
+    display: none;
+}
+
+/* -------- 实验室教师 -------- */
+.page-list .position-text {
+    padding: 4px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.page-list .teacher-ul {
+    padding: 10px 0 20px;
+}
+
+.page-list .teacher-item {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.page-list .teacher-item.odd {
+    clear: left;
+}
+
+.page-list .teacher-item .teacher-photo {
+    float: left;
+    display: inline-block;
+    width: 30%;
+    border: 1px solid #EEEEEE;
+    -webkit-box-shadow: 2px 2px 3px #bbb;
+    -moz-box-shadow: 2px 2px 3px #bbb;
+    box-shadow: 2px 2px 3px #bbb;
+}
+
+.page-list .teacher-item .photo-box {
+    display: block;
+    padding: 6px;
+}
+
+.page-list .teacher-item .photo-box img {
+    width: 100% !important;
+    height: auto !important;
+}
+
+.page-list .teacher-item .teacher-name {
+    display: block;
+    padding: 4px 0 8px;
+    text-align: center;
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.page-list .teacher-item .teacher-info {
+    display: inline-block;
+    float: left;
+    width: 70%;
+    padding: 4px 6px 4px 12px;
+}
+
+.page-list .teacher-item .teacher-info span {
+    display: block;
+    line-height: 2em;
+}
+
+.page-list .teacher-item .teacher-info em {
+    padding-right: 4px;
+    color: #444;
+}
+
+.page-list .teacher-item .teacher-info .website {
+    display: none;
+}
+
+.page-list .teacher-item .more {
+    margin-left: 6px;
+}
+
+/* ------------------------ Single --------------- */
+/* -------- Post -------- */
+.entry-meta {
+    color: #AAA;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #efefef;
+}
+
+.post-navigation .nav-btn {
+    background-color: #555;
+    transition: background .3s;
+}
+
+.post-navigation a {
+    transition: background .3s;
+}
+
+.post-navigation a:hover .nav-title {
+    color: #29B4F0;
+}
+
+.post-navigation a:hover .nav-btn {
+    background-color: #38B7EA;
+}
+
+/* -------- post -------- */
+.entry-header {
+}
+
+.entry-title {
+    margin-top: 0;
+}
+
+.entry-meta {
+    color: #AAA;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #efefef;
+}
+
+.entry-meta span {
+    display: inline-block;
+    padding: 0 20px 0 20px;
+    background: url('./images/meta-icon.png') 0 2px no-repeat;
+}
+
+.entry-meta .posted-on {
+    background-position: 0 -23px;
+}
+
+.entry-meta .views {
+    background-position: 0 -45px;
+}
+
+.entry-content {
+    margin-top: 24px;
+    font-size: 14px;
+    line-height: 1.8em;
+}
+
+.entry-content p {
+    margin: 12px 0;
+    word-break: break-word;
+}
+
+.entry-content img {
+    height: auto;
+    height: auto !important;
+}
+
+.entry-content table {
+    /*table-layout: fixed;*/
+    max-width: 680px;
+    margin: 0 auto;
+    border-color: #ddd;
+    background-color: #FFFFFF;
+}
+
+.entry-content table[border="1"] th, .post table[border="1"] td {
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+.entry-content table th {
+    font-weight: bold;
+}
+
+.entry-content table[border="1"] tbody tr:nth-child(2n) {
+    background: #fafafa;
+}
+
+.entry-content table[border="1"] tbody tr:hover {
+    background: #f0f0f0;
+}
+
+.entry-content ol {
+    padding-left: 20px;
+}
+
+.post-navigation {
+    position: relative;
+    margin-top: 30px;
+    padding: 30px 0;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.post-navigation:before {
+    display: block;
+    content: "";
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    background: #e5e5e5;
+    top: 0;
+    left: 50%;
+}
+
+.post-navigation .nav-previous,
+.post-navigation .nav-next {
+    float: left;
+    width: 50%;
+    min-height: 20px;
+}
+
+.post-navigation span {
+    display: inline-block;
+    float: left;
+    vertical-align: middle;
+    height: 35px;
+    line-height: 35px;
+}
+
+.post-navigation .nav-btn {
+    width: 33px;
+    color: #FFF;
+    font-family: Georgia;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 33px;
+    text-align: center;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background-color: #555;
+    transition: background .3s;
+}
+
+.post-navigation .nav-title {
+    margin-left: -33px;
+    padding: 0 20px 0 45px;
+    width: 100%;
+    color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.post-navigation .nav-next span {
+    float: right;
+}
+
+.post-navigation .nav-next .nav-title {
+    margin-right: -33px;
+    padding: 0 45px 0 20px;
+}
+
+.post-navigation a {
+    transition: background .3s;
+}
+
+.post-navigation a:hover .nav-title {
+    color: #29B4F0;
+}
+
+.post-navigation a:hover .nav-btn {
+    background-color: #38B7EA;
+}
+
+/* -------- Attachment -------- */
+.entry-attachment {
+
+}
+
+.entry-attachment a {
+    color: #333;
+}
+
+.entry-attachment a:hover,
+.entry-attachment a:focus,
+.entry-attachment a:active {
+    color: #017CB9;
+}
+
+.entry-attachment a:visited {
+    color: #555;
+}
+
+.wpba-attachment-title {
+    font-size: 16px;
+    border-bottom: 2px solid #38B7EA;
+}
+
+.wpba-attachment-title h5 {
+    display: inline-block;
+    margin: 0;
+    padding: 6px 12px;
+    font-size: 16px;
+    color: #FFF;
+    background-color: #38B7EA;
+}
+
+.wpba-attachment-list li {
+    line-height: 20px;
+    margin: 10px 0;
+    padding-left: 22px;
+    clear: both;
+    font-size: 15px;
+    background: url('./images/icons/file-icon.png') no-repeat;
+}
+
+/* -------- Gallery -------- */
+.gallery {
+    margin-top: 20px;
+}
+
+.gallery-title {
+    font-size: 16px;
+    border-bottom: 2px solid #38B7EA;
+}
+
+.gallery-title h5 {
+    margin: 0;
+    padding: 6px 12px;
+    display: inline-block;
+    color: #FFF;
+    background-color: #38B7EA;
+}
+
+.gallery-title span {
+    font-size: 13px;
+    color: #FFFFFF;
+}
+
+.gallery-content {
+    margin: 10px -10px;
+}
+
+.gallery-item {
+    float: left;
+    width: 25%;
+    padding: 7px 10px;
+    text-align: center;
+}
+
+.gallery-icon {
+
+}
+
+.gallery-caption {
+    display: none;
+}
+
+.gallery a {
+    cursor: -webkit-zoom-in;
+    cursor: -moz-zoom-in;
+    cursor: zoom-in;
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+    height: auto !important;
+    border-radius: 4px;
+}
+
+.gallery-need-load {
+    display: none;
+    background-color: #38B7EA;
+}
+
+.gallery-load-more {
+    clear: both;
+}
+
+.gallery-load-more span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 20px 0;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    color: #FFFFFF;
+}
+
+/* ------------------------ Others --------------- */
+/* -------- back to top -------- */
+.back-to-top {
+    position: fixed;
+    _position: absolute;
+    right: 20px;
+    bottom: 40px;
+    _bottom: auto;
+    display: none;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #16A085;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 0 5px #F5F5F5;
+    cursor: pointer;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    transition: opacity .35s;
+}
+
+.back-to-top:hover {
+    opacity: 1.0;
+    filter: alpha(opacity=100);
+}
+
+.back-to-top span {
+    display: block;
+    color: #16A085;
+    text-align: center;
+    line-height: 32px;
+    font-size: 30px;
+}
+
+/* -------- 404 -------- */
+.page-content {
+    padding-top: 20px;
+    line-height: 2em;
+}
+
+.error404-content .error404-text {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.error404-area .area-title {
+    font-size: 16px;
+    margin-bottom: 6px;
+    border-bottom: 2px solid #38B7EA;
+}
+
+.error404-area .area-title h5 {
+    margin: 0;
+    padding: 4px 8px;
+    display: inline-block;
+    color: #FFF;
+    background-color: #38B7EA;
+}
+
+.error404-area .search-field {
+    display: inline;
+    width: 70%;
+    height: 40px;
+    margin: 4px 0;
+    padding: 0 4px;
+    color: #4c4c4c;
+    font-size: 18px;
+    border: 1px solid #C5C5C5;
+    border-radius: 0;
+    background-color: #f8f8f8;
+    -webkit-appearance: none;
+    outline: 0;
+}
+
+.error404-area .search-submit {
+    vertical-align: top;
+    height: 40px;
+    margin: 4px 0;
+    width: 28%;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: medium none;
+    border-radius: 0;
+    background: none repeat scroll 0 0 #5bc4be;
+    -webkit-appearance: none;
+}
+
+/* ---------  video -------- */
+.video-youku {
+    text-align: center;
+}
+
+.video-youku iframe {
+    width: 680px;
+    height: 403px;
+}
+
+/* ---------  map -------- */
+.map-baidu {
+    text-align: center;
+}
+
+.map-baidu iframe {
+    width: 680px;
+    height: 480px;
+    max-width: 100%;
+}
+
+/* -------- Search area in main menu -------- */
+.menu-main-container .search-area {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-left: 20px;
+    background-color: #414141;
+    z-index: 3;
+}
+
+.menu-main-container .search-area span {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.menu-main-container .search-icon {
+    display: inline-block;
+    vertical-align: top;
+    width: 60px;
+    height: 50px;
+    background: url('./images/search-icon.png') 15px center no-repeat;
+    cursor: pointer;
+}
+
+.menu-main-container .search-icon:hover {
+    background-position-x: -65px;
+}
+
+.menu-main-container .search-area .active {
+    background-position-x: -157px;
+}
+
+.menu-main-container .search-area .active:hover {
+    background-position-x: -247px;
+}
+
+.menu-main-container .search-content {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.menu-main-container .search-field {
+    display: inline;
+    width: 70%;
+    height: 30px;
+    margin: 10px 6px;
+    padding: 0 4px;
+    color: #4C4C4C;
+    font-size: 16px;
+    border: 1px solid #DADADA;
+    border-radius: 0;
+    background-color: #F8F8F8;
+    -webkit-appearance: none;
+    outline: 0;
+}
+
+.menu-main-container .search-submit {
+    vertical-align: top;
+    height: 30px;
+    margin: 10px 0;
+    width: 24%;
+    color: white;
+    font-size: 14px;
+    border: medium none;
+    border-radius: 0;
+    background: none repeat scroll 0 0 #5BC4BE;
+    -webkit-appearance: none;
+}
+
+/* -------- Menu Panel -------- */
+.menu-panel {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    font-size: 13px;
+    background: #3b3b3b;
+    z-index: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.menu-panel a, .menu-panel a:visited, .menu-panel a:hover {
+    color: #eee;
+}
+
+.menu-panel .menu-panel-back {
+    height: 38px;
+    padding-left: 20px;
+    line-height: 38px;
+    font-size: 16px;
+    background: #323232;
+    border-bottom: 1px solid #1f1f1f;
+}
+
+.menu-panel .menu-panel-search {
+    background: #323232;
+    border-top: 1px solid #3f3f3f;
+    border-bottom: 1px solid #1f1f1f;
+}
+
+.menu-panel .search-field {
+    display: inline;
+    width: 70%;
+    height: 35px;
+    margin: 2%;
+    padding: 0 2.4%;
+    color: #4C4C4C;
+    font-size: 16px;
+    border: 1px solid #DADADA;
+    border-radius: 0;
+    background-color: #F8F8F8;
+    -webkit-appearance: none;
+    outline: 0;
+}
+
+.menu-panel .search-submit {
+    position: relative;
+    height: 35px;
+    line-height: 30px;
+    width: 24%;
+    color: white;
+    font-size: 14px;
+    border: medium none;
+    border-radius: 0;
+    background: none repeat scroll 0 0 #5BC4BE;
+    -webkit-appearance: none;
+}
+
+.menu-panel .menu-panel-container {
+    padding-bottom: 10px;
+}
+
+.menu-panel .menu {
+    padding: 0 2px;
+}
+
+.menu-panel li a {
+    display: block;
+    line-height: 38px;
+    height: 38px;
+    border-top: 1px solid #484848;
+    border-bottom: 1px solid #2e2e2e;
+}
+
+.menu-panel .menu-level-1 {
+    font-size: 16px;
+}
+
+.menu-panel .menu-level-1 a {
+    padding-left: 20px;
+}
+
+.menu-panel .menu-level-2 {
+    font-size: 14px;
+}
+
+.menu-panel .menu-level-2 a {
+    padding-left: 30px;
+}
+
+.menu-panel .menu-level-3 {
+    font-size: 13px;
+}
+
+.menu-panel .menu-level-3 a {
+    padding-left: 40px;
+}
+
+.menu-panel .has-sub-menu > a {
+    background: url('./images/sub-menu.png') 0 center no-repeat;
+}
+
+.menu-panel .active-item > a {
+    background-position: -370px center;
+}
+
+.menu-panel .sub-menu {
+    display: none;
+}
+
+/* Print styles!
+-------------------------------------------------------------------------------*/
+@media print {
+
+}
+
+/* Media queries!
+-------------------------------------------------------------------------------*/
+/* Consider this: www.cloudfour.com/css-media-query-for-mobile-is-fools-gold/ */
+
+/**
+ * Tablet -> width: 720px ~ 960px 
+ */
+@media only screen and (min-width: 720px) and (max-width: 960px) {
+    .site-content {
+        float: none;
+        width: 100%;
+    }
+
+    .page-list .list-item {
+        line-height: 2.8em;
+        height: 2.8em;
+    }
+
+    .widget-area {
+        float: none;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .widget-area .widget_teachers {
+        position: relative;
+        float: left;
+        width: 200px;
+        margin-right: -200px;
+    }
+
+    .widget-area .widget_recent_entries {
+        float: right;
+        width: 100%;
+    }
+
+    .widget-area .widget_recent_entries .widget-title,
+    .widget-area .widget_recent_entries ul {
+        margin-left: 220px;
+    }
+
+    .widget-area .widget_recent_entries li {
+        line-height: 2.3em;
+        height: 2.3em;
+    }
+
+    .widget-area .widget_recent_entries li a {
+        display: block;
+        margin-right: 70px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .widget-area .widget_recent_entries li .post-title {
+        display: block;
+        float: left;
+        width: 100%;
+    }
+
+    .widget-area .widget_recent_entries li .post-date {
+        display: block;
+        position: relative;
+        float: right;
+        width: 70px;
+        margin-left: -70px;
+        font-size: 12px;
+        text-align: right;
+    }
+
+    .single .widget-area .ajax_hits_counter_popular_posts_widget {
+        display: none;
+    }
+
+    .category .widget-area .ajax_hits_counter_popular_posts_widget {
+        margin-left: 220px;
+    }
+
+}
+
+/**
+ * Phone -> width: < 720px 
+ */
+@media only screen and (max-width: 719px) {
+    .menu-main-container {
+        display: none;
+    }
+
+    .small-menu {
+        display: block;
+    }
+
+    .home-primary .widget {
+        width: 100%;
+        margin: 1% 0;
+    }
+
+    .lab-intro-area {
+        width: 49%;
+        margin-right: 2%;
+    }
+
+    .lab-intro .area-two,
+    .lab-intro .area-four {
+        margin-right: 0%;
+    }
+
+    .lab-info-area {
+        float: none;
+        width: 100%;
+    }
+
+    .lab-info .area-title {
+        padding: 20px 10px;
+    }
+
+    .lab-info .map {
+        padding: 0 10px;
+    }
+
+    .lab-info .text {
+        padding: 0 10px;
+    }
+
+    .site-statistics-area {
+        float: none;
+        width: 100%;
+    }
+
+    .site-statistics-area {
+        padding-top: 20px;
+    }
+
+    .site-statistics .area-one {
+        padding-top: 0px;
+    }
+
+    .site-info .copyright {
+        float: none;
+    }
+
+    .site-info .login {
+        float: none;
+        padding: 0 0 20px;
+    }
+
+    .site-content {
+        float: none;
+        width: 100%;
+    }
+
+    .page-list .list-item {
+        line-height: 2.8em;
+        height: 2.8em;
+    }
+
+    .page-list .discussion-item .date, .page-list .discussion-item .location {
+        width: 100%;
+    }
+
+    .page-list .student-item {
+        width: 100%;
+    }
+
+    .widget-area {
+        float: none;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .widget-area .widget_teachers .metaslider {
+        width: 300px !important;
+        margin: 0 auto;
+    }
+
+    .widget-area .widget_teachers .metaslider img {
+        width: 300px;
+        height: auto;
+    }
+
+    .widget-area .ajax_hits_counter_popular_posts_widget li {
+        line-height: 2em;
+        height: 2em;
+    }
+
+    .widget-area .ajax_hits_counter_popular_posts_widget li a {
+        display: block;
+        margin-right: 70px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .widget-area .ajax_hits_counter_popular_posts_widget li .post-title {
+        display: block;
+        float: left;
+        width: 100%;
+    }
+
+    .widget-area .ajax_hits_counter_popular_posts_widget li .post-date {
+        display: block;
+        position: relative;
+        float: right;
+        width: 70px;
+        margin-left: -70px;
+        font-size: 12px;
+        text-align: right;
+    }
+
+    .widget-area .widget_recent_entries li {
+        line-height: 2em;
+        height: 2em;
+    }
+
+    .widget-area .widget_recent_entries li a {
+        display: block;
+        margin-right: 70px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .widget-area .widget_recent_entries li .post-title {
+        display: block;
+        float: left;
+        width: 100%;
+    }
+
+    .widget-area .widget_recent_entries li .post-date {
+        display: block;
+        position: relative;
+        float: right;
+        width: 70px;
+        margin-left: -70px;
+        font-size: 12px;
+        text-align: right;
+    }
+
+    .widget-area .metaslider-1558 {
+        display: none;
+    }
+
+    .widget-area .all-teachers {
+        display: block;
+    }
+
+    .widget-area .all-teachers li {
+        width: 50%;
+        float: left;
+        padding: 0 10px;
+    }
+
+    .widget-area .all-teachers li img {
+        width: 100%;
+    }
+
+    .widget-area .all-teachers li .caption-wrap {
+        text-align: center;
+        padding: 0px 0 6px;
+    }
+
+    .page-list .gallery-item {
+        width: 50%;
+    }
+
+    .post-navigation {
+        padding: 15px 0;
+    }
+
+    .post-navigation:before {
+        display: none;
+    }
+
+    .post-navigation .nav-previous, .post-navigation .nav-next {
+        float: none;
+        width: 100%;
+        height: 40px;
+        margin: 10px 0;
+    }
+
+    .post-navigation .nav-next span {
+        float: none;
+    }
+
+    .post-navigation .nav-next .nav-title {
+        padding: 0 20px 0 45px;
+    }
+
+    .entry-content table[border="1"] th, .post table[border="1"] td {
+        padding: 4px;
+        border: 1px solid #ddd;
+    }
+
+    .video-youku iframe {
+        width: 260px;
+        height: 170px;
+    }
+
+    .map-baidu iframe {
+        height: 380px;
+    }
+
+    .site-info .login {
+        float: right;
+        padding: 0 10px 20px;
+    }
+
+}
+
+/*teaching_body*/
+#TeachingTeam {
+    margin: auto;
+    font-size: 10.5pt;
+}
+
+#Teacher_Introduce span {
+    line-height: 130%;
+    font-family: 宋体, serif;
+    color: black;
+    font-size: 12pt;
+}
+
+.Teachers_list {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Teachers_list ul {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.Teachers_list li {
+    height: 35px;
+    line-height: 35px;
+    border-bottom: 1px dashed #D7D7D7;
+    padding-left: 13px;
+}
+
+.Teachers_list li a {
+    text-decoration: none;
+    color: #333;
+    margin-left: 5px;
+}
+
+.Teachers_list li a:hover {
+    color: #38B7EA;
+}
+
+.Teachers_list li span {
+    float: right;
+    color: #999;
+}
+
+.Teacher_information h1 {
+    display: block;
+    font-family: SimSun, Arial, Helvetica, sans-serif;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.5em;
+    line-height: 32px;
+}
+
+.detail {
+    text-align: center;
+}
+
+.Teacher_information span {
+    color: #666;
+    font-size: 12px;
+    font-family: SimSun, Arial, Helvetica, sans-serif;
+}
+
+.information-show {
+    width: 100%;
+}
+
+.information-show table {
+    margin: auto;
+}
