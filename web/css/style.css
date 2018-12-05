@@ -2268,16 +2268,82 @@ img.aligncenter {
 
 }
 
-
-
 /*teaching_body*/
-#TeachingTeam{
-    margin:auto;
+#TeachingTeam {
+    margin: auto;
     font-size: 10.5pt;
 }
-#Teacher_Introduce span{
-    line-height:130%;
+
+#Teacher_Introduce span {
+    line-height: 130%;
     font-family: 宋体, serif;
-    color:black;
-    font-size:12pt;
+    color: black;
+    font-size: 12pt;
+}
+
+.Teachers_list {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Teachers_list ul {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.Teachers_list li {
+    height: 35px;
+    line-height: 35px;
+    border-bottom: 1px dashed #D7D7D7;
+    padding-left: 13px;
+}
+
+.Teachers_list li a {
+    text-decoration: none;
+    color: #333;
+    margin-left: 5px;
+}
+
+.Teachers_list li a:hover {
+    color: #38B7EA;
+}
+
+.Teachers_list li span {
+    float: right;
+    color: #999;
+}
+
+.Teacher_information h1 {
+    display: block;
+    font-family: SimSun, Arial, Helvetica, sans-serif;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.5em;
+    line-height: 32px;
+}
+
+.detail {
+    text-align: center;
+}
+
+.Teacher_information span {
+    color: #666;
+    font-size: 12px;
+    font-family: SimSun, Arial, Helvetica, sans-serif;
+}
+
+.information-show {
+    width: 100%;
+}
+
+.information-show table {
+    margin: auto;
 }
